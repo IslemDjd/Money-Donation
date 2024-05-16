@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link href="../index.css" rel="stylesheet">
+    <title>Document</title>
 </head>
 <body>
-    <nav class="bg-gray-800">
+<nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -38,14 +37,14 @@
                     <div class=" sm:ml-6 block">
                         <div class="flex space-x-4">
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="index.html" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                            <a href="index.php" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                 aria-current="page">Home</a>
                             <a href="Projects.html"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
                             <a href="AboutUs.html"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About
                                 Us</a>
-                            <a href="Contact.html"
+                            <a href="Contact.php"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
                         </div>
                     </div>
@@ -55,7 +54,7 @@
                     <!-- Profile dropdown -->
                     <div class="relative ml-3">
                         <div>
-                            <a href="SignIn.html" class="relative flex  text-sm text-white font-bold" id="user-menu-button"
+                            <a href="SignIn.php" class="relative flex  text-sm text-white font-bold" id="user-menu-button"
                                 aria-expanded="false" aria-haspopup="true">
                                 Sign In
                             </a>
@@ -79,28 +78,6 @@
                 </div>
             </div> -->
     </nav>
-
-
-    <div class="flex flex-col items-center justify-center h-screen">
-        <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-2xl text-center font-bold text-gray-900 mb-4">Sign In</h2>
-            <form class="flex flex-col" method="post">
-                <input type="email"
-                    class="bg-gray-100 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                    placeholder="Email address">
-                <input type="password"
-                    class="bg-gray-100 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                    placeholder="Password">
-                <div class="flex items-center justify-between flex-wrap">
-
-                    <p class="text-gray-900 mt-4"> Don't have an account? <a href="SignUp.html"
-                            class="text-sm text-blue-500 -200 hover:underline mt-4">Signup</a></p>
-                </div>
-                <button type="submit"
-                    class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150">Sign In</button>
-            </form>
-        </div>
-    </div>
 
 </body>
 </html>
