@@ -1,3 +1,42 @@
+<?php
+
+include_once "conndatabase.php";
+
+if(isset($_POST['signup']))
+{
+    $erreur=0;
+    $firstname=$_POST['first_name'];
+    $lastname=$_POST['last_name'];
+    $email=$_POST['email'];
+    $phone=$_POST['phone'];
+    $password=$_POST['password'];
+
+    $check_unique=mysqli_query($connfig,"SELECT * FROM users WHERE email='$email' LIMIT 1");
+    if(mysqli_num_rows($check_unique)> 0)
+    {
+        $erreur=1;
+    }
+
+
+    if($erreur==0)
+    {
+        $date=date("Y-m-d H:i:s");
+        $insert_data=mysqli_query($connfig,"INSERT INTO `users`(`firstname`, `lastname`, `email`, `phone`, `password`, `role`, `date`) VALUES
+         ('$firstname','$lastname','$email','$phone','$password','user','$date')");
+
+         if($insert_data)
+         {
+            $_SESSION['signup']="Account created succesfully,login now!";
+            header("Location:SignIn.php");
+            die;
+         }
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,12 +52,7 @@
 
 
 ?>
-    <!--
-      Heads up! 👋
     
-      Plugins:
-        - @tailwindcss/forms
-    -->
     
     <section class="bg-white">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -71,14 +105,14 @@
                         </p>
                     </div>
     
-                    <form action="#" class="mt-8 grid grid-cols-6 gap-6">
+                    <form action="#" method="POST" class="mt-8 grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
                             <label for="FirstName" class="block text-sm font-medium text-gray-700">
                                 First Name
                             </label>
     
                             <input type="text" id="FirstName" name="first_name"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
                         </div>
     
                         <div class="col-span-6 sm:col-span-3">
@@ -87,31 +121,32 @@
                             </label>
     
                             <input type="text" id="LastName" name="last_name" autocomplete="off"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm " />
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm " required />
                         </div>
     
                         <div class="col-span-6">
                             <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
     
                             <input type="email" id="Email" name="email"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
+                        </div>
+
+                        <div class="col-span-6">
+                            <label for="Telephone" class="block text-sm font-medium text-gray-700"> Phone </label>
+    
+                            <input type="text" id="Email" name="phone"
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
+                        </div>
+                        <div class="col-span-6">
+                            <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
+    
+                            <input type="password" id="Email" name="password"
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
                         </div>
     
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
+                        
     
-                            <input type="password" id="Password" name="password"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" />
-                        </div>
-    
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="PasswordConfirmation" class="block text-sm font-medium text-gray-700">
-                                Password Confirmation
-                            </label>
-    
-                            <input type="password" id="PasswordConfirmation" name="password_confirmation"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" />
-                        </div>
+                        
     
                        
     
@@ -124,7 +159,7 @@
                                 <a href="SignIn.php" class="text-gray-700 underline">Sign in</a>.
                             </p>
                             <button
-                                class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+                              type="submit" name="signup"   class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
                                 Create an account
                             </button>
                         </div>
