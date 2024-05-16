@@ -15,7 +15,7 @@ if(isset($_POST['login']))
         $_SESSION['id']= $row['id_user'];
         if($row['role']==="user")
         {
-            header('location:contact.php');
+            header('location:profileuser.php');
             die;
         }else if($row['role']==="super_user")
         {
