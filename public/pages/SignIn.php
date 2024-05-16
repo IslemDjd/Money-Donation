@@ -41,7 +41,7 @@ if(isset($_POST['login']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <link href="../index.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 <?php
@@ -53,6 +53,13 @@ include "NavBar/NavBar.php";
 
     <div class="flex flex-col items-center justify-center h-screen">
         <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+            </div>
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+            </div>
+            
             <h2 class="text-2xl text-center font-bold text-gray-900 mb-4">Sign In</h2>
             <form class="flex flex-col" action="#" method="post">
                 <input type="email"
@@ -75,6 +82,15 @@ include "NavBar/NavBar.php";
             </form>
         </div>
     </div>
+
+    
+
+    
+
+
+
+
+
 
 </body>
 </html>

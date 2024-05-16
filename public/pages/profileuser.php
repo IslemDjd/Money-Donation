@@ -191,8 +191,9 @@ if (isset($_POST['delete'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <title>Profile</title>
 </head>
 <body>
@@ -227,9 +228,11 @@ include "NavBar/NavBar.php";
             </div>
             <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
               <div class="py-6 px-3 mt-32 sm:mt-0">
-                <button href="logout.php" class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
-                  Logout
-                </button>
+                <a href="logout.php">
+                  <button  class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
+                    Logout
+                  </button>
+                </a>
               </div>
             </div>
             <div class="w-full lg:w-4/12 px-4 lg:order-1">
@@ -245,7 +248,7 @@ include "NavBar/NavBar.php";
             </div>
           </div>
           <div class="text-center mt-12">
-            <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+            <h3 class="text-4xl font-semibold leading-normal text-blueGray-700 mb-2">
               <?php echo $infos['firstname'].' '.$infos['lastname'] ; ?>
             </h3>
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
@@ -279,19 +282,19 @@ include "NavBar/NavBar.php";
 
                 
                 <button type="submit"
-                  name="changer"  class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150">Change</button>
+                  name="changer"  class="w-1/2 mx-auto mb-20 bg-black text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-gray-700 transition ease-in-out duration-150">Change</button>
             </form>
             <h6 class="text-2xl text-center font-bold text-gray-900 mb-4">Delete Account</h6>
             <form class="flex flex-col" action="#" method="post">
                 <input type="password"
                    name="password_delete" class="bg-gray-100 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                     placeholder="Password" required>
-                    <p class="text-red-600"><?php if(isset($e_password_delete)) echo $e_password_delete;  ?></p>
+                    <p class="text-red-600 font-medium mb-8 text-start"><?php if(isset($e_password_delete)) echo $e_password_delete;  ?></p>
 
 
                 
                 <button type="submit"
-                  name="delete"  class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150" onclick="return confirm('Are you sure want to delete you account ?');">Delete</button>
+                  name="delete"  class="bg-red-500 w-1/2 mx-auto text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-red-600 border-red-500 transition ease-in-out duration-150" onclick="return confirm('Are you sure want to delete you account ?');">Delete</button>
             </form>
                
               </div>
@@ -300,18 +303,8 @@ include "NavBar/NavBar.php";
         </div>
       </div>
     </div>
-    <footer class="relative bg-blueGray-200 pt-8 pb-6 mt-8">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-wrap items-center md:justify-between justify-center">
-      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
-        <div class="text-sm text-blueGray-500 font-semibold py-1">
-          Made with <a href="https://www.creative-tim.com/product/notus-js" class="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" class="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
   </section>
+  
 </main>
 </body>
 </html>
