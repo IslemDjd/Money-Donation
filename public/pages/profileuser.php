@@ -204,6 +204,12 @@ include "NavBar/NavBar.php";
 
 ?>
 <main class="profile-page">
+  <div class=" fixed z-10 w-full top-0 p-4 mb-4 text-sm text-red-800  bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+            </div>
+            <div class="fixed z-10 w-full top-0  p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+            </div>
   <section class="relative block h-500-px">
     <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
             background-image: url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80');
