@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../index.css">
+    <title>Projects</title>
+    <link href="../index.css" rel="stylesheet">
 </head>
 <body>
-    <h1>About Us</h1>
+    <?php include "NavBar/NavBar.php";?>
+    <h1 class="text-center">Projets</h1>
 </body>
 </html>
