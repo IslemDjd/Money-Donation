@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once "conndatabase.php";
 
 if(isset($_POST['signup']))
@@ -26,7 +26,7 @@ if(isset($_POST['signup']))
 
          if($insert_data)
          {
-            $_SESSION['signup']="Account created succesfully,login now!";
+            $_SESSION['Go']="Account created succesfully,login now!";
             header("Location:SignIn.php");
             die;
          }

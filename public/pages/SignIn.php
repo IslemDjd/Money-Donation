@@ -1,7 +1,7 @@
 <?php
-
-include_once "conndatabase.php";
 session_start();
+include_once "conndatabase.php";
+
 if(isset($_POST['login']))
 {
     $email=$_POST['email'];
@@ -28,7 +28,7 @@ if(isset($_POST['login']))
         }
     }else
     {
-        $error="Invalid email or password";
+        $_SESSION['back']="Invalid email or password";
     }
 }
 
@@ -53,12 +53,37 @@ include "NavBar/NavBar.php";
 
     <div class="flex flex-col items-center justify-center h-screen">
         <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+        <?php   if(isset($_SESSION['back']) && !empty($_SESSION['back'])): ?>
             <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+
+            <?php
+                {
+                    echo'
+                    
+                        <span class="font-medium"></span>'.$_SESSION['back'].'';
+                 }
+                unset($_SESSION['back']);
+            ?>    
             </div>
-            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-                <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+
+            <?php endif;?>
+
+
+            <?php   if(isset($_SESSION['Go']) && !empty($_SESSION['Go'])): ?>
+                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <?php
+                {
+                    echo'
+                    
+                        <span class="font-medium">Success Sign up!</span>'.$_SESSION['Go'].'';
+                 }
+                unset($_SESSION['Go']);
+            ?>
             </div>
+             <?php endif;?>
+
+          
+           
             
             <h2 class="text-2xl text-center font-bold text-gray-900 mb-4">Sign In</h2>
             <form class="flex flex-col" action="#" method="post">

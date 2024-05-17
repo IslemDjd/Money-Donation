@@ -91,18 +91,23 @@ if(isset($_POST['changer']))
                 $stmt->bind_param("ssss", $new_password, $email,$old_password,$id);
                 $stmt->execute();
                 $stmt->close();
-                $_SESSION['creat']= "Votre mot de passe a été modifié avec succès.";
+                $_SESSION['Go']= "Votre mot de passe a été modifié avec succès.";
                 header('location:profileuser.php');
                 die;
             }
             else
             {
-                $e_cha="vous etes deja utiliser ce mot de passe!";
+              $_SESSION['back']="Vous etes deja utiliser ce mot de passe!";
+              header('location:profileuser.php');
+              die;
                 
             }
         }else
         {
-            $e_change="Mot de pass incorect!";
+          $_SESSION['back']="Mot de pass incorect!";
+          header('location:profileuser.php');
+          die;
+         
            
         }
 
@@ -126,19 +131,23 @@ if (isset($_POST['delete'])) {
         if(strpos($password_delete, ' ') !== false)
         {
             $error_delete=1;
-            $e_password_delete="le Mot de passe ne doit pas contenir des espaces!";
+            $_SESSION['back']="le Mot de passe ne doit pas contenir des espaces!";
+            header('location:profileuser.php');
+            die;
 
 
         }else if(strlen($password_delete) < 8)
         {
             $error_delete=1;
-            $e_password_delete="Le mot de passe doit contenir au moins 8 caractères!";
+            $_SESSION['back']="Le mot de passe doit contenir au moins 8 caractères!";
+            header('location:profileuser.php');
+            die;
         }
 
     }else
     {
     $error_delete=1;
-        $e_password_delete="Obligatoire!";
+    $_SESSION['back']="Obligatoire!";
     }
 
     if($error_delete==0)
@@ -166,18 +175,21 @@ if (isset($_POST['delete'])) {
             
             $stmt->close();
             
-            
+              
             header('location:logout.php');
             die;
             
         }else{
-            $e_password_delete="Mot de passe  incorrect!";
-            
+            $_SESSION['back']="Mot de passe  incorrect!";
+            header('location:profileuser.php');
+            die;
 
         }
         }else
         {
-            $e_password_delete = "Obligatoire!";
+          $_SESSION['back'] = "Obligatoire!";
+          header('location:profileuser.php');
+          die;
             
 
         }
@@ -204,12 +216,47 @@ include "NavBar/NavBar.php";
 
 ?>
 <main class="profile-page">
-  <div class=" fixed z-10 w-full top-0 p-4 mb-4 text-sm text-red-800  bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+
+
+<?php   if(isset($_SESSION['back']) && !empty($_SESSION['back'])): ?>
+            <div class="fixed z-10 w-full top-0 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+            <?php
+                {
+                    echo'
+                    
+                        <span class="font-medium"></span>'.$_SESSION['back'].' ';
+                }
+                      unset($_SESSION['back']);
+                 ?>    
             </div>
-            <div class="fixed z-10 w-full top-0  p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-                <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+            
+            
+            <?php endif; ?>
+
+
+
+
+
+            <?php   if(isset($_SESSION['Go']) && !empty($_SESSION['Go'])): ?>
+            <div class="fixed z-10 w-full top-0 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+
+            <?php
+                {
+                    echo'
+                    
+                        <span class="font-medium"></span>'.$_SESSION['Go'].' ';
+                }
+                      unset($_SESSION['Go']);
+                 ?>    
             </div>
+            
+            
+            <?php endif; ?>
+
+
+
+            
   <section class="relative block h-500-px">
     <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
             background-image: url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80');
