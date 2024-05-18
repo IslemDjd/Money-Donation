@@ -6,13 +6,13 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard </title>
-    <link rel="stylesheet" href="../index.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <?php 
-        include "../NavBar/NavBar.php";
+        include "NavBar/NavBar.php";
     ?>
-    Dashboard Donnateur
+    Dashboard Benificateur
 </body>
 </html>
