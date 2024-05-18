@@ -15,7 +15,7 @@ session_start();
 <body>
     
     <?php 
-        include "SideBar/sidebar.php";
+        include "SideBar/sidebarDon.php";
     ?>
 </body>
 <script src="SideBar/js/jquery.min.js"></script>
