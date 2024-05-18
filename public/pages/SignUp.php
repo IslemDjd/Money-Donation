@@ -10,7 +10,18 @@ if(isset($_POST['signup']))
     $email=$_POST['email'];
     $phone=$_POST['phone'];
     $password=$_POST['password'];
+    if(isset($_POST['role']) && !empty($_POST['role']))
+    {
 
+        $role=$_POST['role'];
+    }
+
+    if(!in_array($role,['donnator','beneficiary']))
+    {
+        $erreur=1;
+
+    }
+    
     $check_unique=mysqli_query($connfig,"SELECT * FROM users WHERE email='$email' LIMIT 1");
     if(mysqli_num_rows($check_unique)> 0)
     {
@@ -18,11 +29,12 @@ if(isset($_POST['signup']))
     }
 
 
+
     if($erreur==0)
     {
         $date=date("Y-m-d H:i:s");
         $insert_data=mysqli_query($connfig,"INSERT INTO `users`(`firstname`, `lastname`, `email`, `phone`, `password`, `role`, `date`) VALUES
-         ('$firstname','$lastname','$email','$phone','$password','user','$date')");
+         ('$firstname','$lastname','$email','$phone','$password','$role','$date')");
 
          if($insert_data)
          {
