@@ -13,17 +13,16 @@ if(isset($_POST['login']))
         $row=mysqli_fetch_assoc($valide);
         $_SESSION['email']= $row['email'];
         $_SESSION['id']= $row['id_user'];
-        if($row['role']==="user")
+        $_SESSION['role']= $row['role'];
+
+
+        if($row['role']==="donnator")
         {
-            header('location:profileuser.php');
+            header('location:DashboardDonnateur.php');
             die;
-        }else if($row['role']==="super_user")
+        }else if($row['role']==="beneficiary")
         {
-            header('location:');
-            die;
-        }else if($row['role']==="admin")
-        {
-            header('location:');
+            header('location:DashboardBenificateur.php');
             die;
         }
     }else

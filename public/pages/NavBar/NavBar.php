@@ -10,6 +10,8 @@
 
 <?php  if(isset($_SESSION['email']) && isset($_SESSION['id']))
 {
+
+    
     echo'
 
 <nav class="bg-gray-800">
@@ -51,9 +53,22 @@
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About
                                 Us</a>
                             <a href="contact.php"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
-                            <a href="DashboardBenificateur.php"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>';
+                                if($_SESSION['role']=="donnator")
+                                {
+
+                                    echo'
+                                <a href="DashboardDonnateur.php"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>';
+                                }else if($_SESSION['role']=="beneficiary")
+                                {
+                                     echo'
+                                    <a href="DashboardBenificateur.php"
+                                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>';
+                                    
+                                }
+
+                                echo'
                         </div>
                     </div>
                 </div>
