@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include_once "conndatabase.php";
 
 if(isset($_POST['signup']))
@@ -131,6 +131,14 @@ if(isset($_POST['signup']))
                                 class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
                         </div>
 
+                        <div class="col-span-6">
+                            <label for="Telephone" class="block text-sm font-medium text-gray-700"> Role </label>
+                            <select name="role" id="" class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required>
+                                <option value="" selected disabled>Select Role</option>
+                                <option value="donnator" >Donnator</option>
+                                <option value="beneficiary" >Beneficiary</option>
+                            </select>
+                        </div>
                         <div class="col-span-6">
                             <label for="Telephone" class="block text-sm font-medium text-gray-700"> Phone </label>
     
