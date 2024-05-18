@@ -42,7 +42,7 @@
             <label for="objectif" class="block text-sm my-2 mx-2 font-medium text-gray-700">
                 Objectif (En DZD)
             </label>
-            <input type="text"
+            <input type="number"
             name="objectif"
             id="objectif"
             required
