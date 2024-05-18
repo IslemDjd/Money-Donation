@@ -1,7 +1,7 @@
 <?php
 
 include_once "conndatabase.php";
-session_start();
+// session_start();
 
 if(!isset($_SESSION['email']) || !isset($_SESSION['id']))
 {
@@ -92,7 +92,7 @@ if(isset($_POST['changer']))
                 $stmt->execute();
                 $stmt->close();
                 $_SESSION['Go']= "Votre mot de passe a été modifié avec succès.";
-                header('location:profileuser.php');
+                // header('location:profileuser.php');
                 die;
             }
             else
@@ -209,13 +209,7 @@ if (isset($_POST['delete'])) {
     <title>Profile</title>
 </head>
 <body>
-<?php
-
-include "NavBar/NavBar.php";
-
-
-?>
-<main class="profile-page">
+<main class="profile-page w-full">
 
 
 <?php   if(isset($_SESSION['back']) && !empty($_SESSION['back'])): ?>
@@ -257,8 +251,8 @@ include "NavBar/NavBar.php";
 
 
             
-  <section class="relative block h-500-px">
-    <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
+  <section class="relative block z-0  h-500-px">
+    <div class="absolute top-0 z-0 w-full h-full bg-center bg-cover" style="
             background-image: url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80');
           ">
       <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
@@ -270,7 +264,7 @@ include "NavBar/NavBar.php";
     </div>
   </section>
   <section class="relative py-16 bg-blueGray-200">
-    <div class="container mx-auto px-4">
+    <div class="container w-full mx-auto px-4">
       <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
         <div class="px-6">
           <div class="flex flex-wrap justify-center">

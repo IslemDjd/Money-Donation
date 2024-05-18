@@ -18,11 +18,11 @@ if(isset($_POST['login']))
 
         if($row['role']==="donnator")
         {
-            header('location:DashboardDonnateur.php');
+            header('location:DashboardDonnateur.php?p=profile');
             die;
         }else if($row['role']==="beneficiary")
         {
-            header('location:DashboardBenificateur.php');
+            header('location:DashboardBenificateur.php?p=profile');
             die;
         }
     }else
