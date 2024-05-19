@@ -19,7 +19,7 @@ session_start();
 
 
     
-    <div class="grid gap-6 w-[25%] h-full p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <div class="grid gap-6 h-full p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <!-- Project Card -->
 
         <?php $get_projects=mysqli_query($connfig,"SELECT p.* , u.* FROM `projects` p JOIN `users` u ON p.id_user=u.id_user order by p.date desc");
