@@ -153,8 +153,9 @@ if(isset($_POST['save']))
 </head>
 <body>
    
-    <div class="max-w-md mx-auto mt-8 bg-white border-2 rounded-lg shadow-md p-6">
+    <div class="w-full sm:w-3/5  mx-auto  my-16 bg-white border-2 rounded-lg shadow-md p-6">
         <h2 class="text-2xl text-center font-bold text-gray-800 mb-4">Make Donnation</h2>
+        
         <?php   if(isset($_SESSION['Go']) && !empty($_SESSION['Go'])): ?>
                 <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
                 <?php

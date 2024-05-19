@@ -139,7 +139,7 @@ if(isset($_POST['enregistrer']))
     <!-- <link rel="stylesheet" href="index.css"> -->
 </head>
 <body>
-    <div class=" w-full sm:w-3/5  mx-auto mt-16 bg-white border-2 rounded-lg shadow-md p-6">
+    <div class=" w-full sm:w-3/5  mx-auto my-16 bg-white border-2 rounded-lg shadow-md p-6">
         <h2 class="text-2xl text-center font-bold text-gray-800 mb-4">Launch Project</h2>
 
 
