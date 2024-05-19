@@ -15,8 +15,20 @@ $id=$_SESSION['id'];
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-   
+    
     <div class="grid gap-6 w-full h-full p-4 mt-16 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+        <?php   if(isset($_SESSION['Go']) && !empty($_SESSION['Go'])): ?>
+                        <div class="p-4 mb-4 text-sm text-green-800 w-full rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                        <?php
+                        {
+                            echo'
+                            
+                                <span class="font-medium text-center">Success !</span>'.$_SESSION['Go'].'';
+                         }
+                        unset($_SESSION['Go']);
+                    ?>
+                    </div>
+                     <?php endif;?>
         <!-- Project Card -->
 
         <?php $get_projects=mysqli_query($connfig,"SELECT p.* , u.* FROM `projects` p JOIN `users` u ON p.id_user=u.id_user WHERE u.id_user='$id' order by p.date desc");
@@ -30,6 +42,8 @@ $id=$_SESSION['id'];
                     <div class="p-4 ">
                     <h2 class="text-xl font-bold">Project : '.$row['project_name'].'</h2> 
                     <h3 class="text-lg font-semibold mt-3 ">Montant : <span class="text-green-600"> '.$row['Objectif'].'</span>DA</h3>
+                    <a href="deleteproject.php?d='.$row['id_projects'].'"><button class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">Delete</button></a>
+                    <a href="detailproject.php?d='.$row['id_projects'].'"><button class="bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">Details</button></a>
                     </div>
                     </div>';
                 }
