@@ -23,12 +23,14 @@ session_start();
                 while($row=mysqli_fetch_assoc($get_projects))
                  {
                     echo'
-                    <div class="bg-white rounded-lg shadow-md">
+                    <div class="bg-white rounded-lg shadow-md relative">
                     <img class="w-full h-60 object-cover rounded-t-lg" alt="Card Image" src="./pfp_project/'.$row['project_photo'].'">
-                    <div class="p-4">
-                    <h2 class="text-xl font-semibold">'.$row['project_name'].'</h2> 
-                    '.$row['Objectif'].' '.$row['firstname'].' '.$row['lastname'].'
+                    <div class="p-4 ">
+                    <h2 class="text-xl font-bold">Project : '.$row['project_name'].'</h2> 
                     <p class="text-gray-600">'.$row['Description'].'</p>
+                    <h3 class="text-lg font-semibold mt-3 ">Montant : <span class="text-green-600"> '.$row['Objectif'].'</span>DA</h3>
+                    
+                    <p class="text-gray-600 mb-16">Owner : '.$row['firstname'].' '.$row['lastname'].'</p>
                     <div class="flex justify-end items-center mt-4">';
                     if(isset($_SESSION['email']))
                     {
@@ -36,11 +38,11 @@ session_start();
                         if($_SESSION['role']=="donnator")
                         {
                             echo'
-                            <a href="DashboardDonnateur.php?p=Donnation&projet='.$row['project_name'].'&v='.$row['id_projects'].'"><button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400">Donate</button></a>';
+                            <a href="DashboardDonnateur.php?p=Donnation&projet='.$row['project_name'].'&v='.$row['id_projects'].'"><button class="absolute bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">Donate</button></a>';
                         }
                     }else
                     {
-                       echo' <a href="SignIn.php"><button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400">Donate</button></a>';
+                       echo' <a href="SignIn.php"><button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">Donate</button></a>';
                     }
                     echo'
                     </div>
