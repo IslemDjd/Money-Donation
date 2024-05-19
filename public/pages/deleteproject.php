@@ -9,7 +9,6 @@ if(isset($_GET['d']) && !empty($_GET['d']))
     $delete=mysqli_query($connfig,"DELETE FROM `projects` WHERE id_projects='$deleteproject' AND id_user='{$_SESSION['id']}' LIMIT 1");
     if($delete)
     {
-        $_SESSION['Go']="Project Deleted Successfully";
         header('location:DashboardBenificateur.php?p=myProjects');
         die;
     }

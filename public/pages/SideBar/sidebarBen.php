@@ -49,7 +49,9 @@
 
         if(isset($_GET["p"]) && $_GET["p"] == "profile")
           include "profileuser.php";
-         
+        
+        if(isset($_GET["p"]) && $_GET["p"] == "detailproject")
+          include "detailproject.php";
 
         ?>
 		</div>

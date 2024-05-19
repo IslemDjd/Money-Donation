@@ -53,7 +53,7 @@ if(isset($_POST['enregistrer']))
     }else
     {
         if (!preg_match('/^\d+$/', $_POST['objectif'])) {
-        $_SESSION['back']=" Invalid Type!";
+        $_SESSION['back']=" Enter a valid Amount!";
         $er = 1; 
         } else {
             $objectif=$_POST['objectif'];
