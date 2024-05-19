@@ -135,7 +135,7 @@ if(isset($_POST['save']))
              if($sql)
              {
                 $_SESSION['Go']="Thank you for your donnation!";
-                
+                $e=1;
                 
                 
 

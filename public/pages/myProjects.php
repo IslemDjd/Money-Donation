@@ -43,7 +43,11 @@ $id=$_SESSION['id'];
                     <h2 class="font-bold text-base">Project : '.$row['project_name'].'</h2> 
                     <h3 class=" mt-2 font-semibold ">Montant : <span class="text-green-600"> '.$row['Objectif'].'</span>DA</h3>
                     <div class="flex justify-end gap-2 flex-col items-end sm:items-center sm:flex-row mt-4">
-                    <a href="deleteproject.php?d='.$row['id_projects'].'"><button class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">Delete</button></a>
+                    <a href="deleteproject.php?d=' . $row['id_projects'] . '" onclick="return confirm(\'Are you sure you want to delete your Project?\');">
+                    <button class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">
+                        Delete
+                    </button>
+                </a>
                     <a href="DashboardBenificateur.php?p=detailproject&d='.$row['id_projects'].'"><button class="bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">Details</button></a>
                     </div>
                     </div>

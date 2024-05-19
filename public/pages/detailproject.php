@@ -1,5 +1,6 @@
 <?php
 include_once "conndatabase.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,12 +14,46 @@ include_once "conndatabase.php";
 
 <body>
     <div class="w-11/12 mt-16 mx-auto p-4">
-        <img class="w-60 h-60 object-cover mb-8 mx-auto" src="https://source.unsplash.com/1600x900/?donation" alt="">
-        <h1 class="text-2xl mb-2 text-center font-bold">Project Name</h1>
-        <p class="text-base text-center font-medium">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit,
-            officiis!</p>
+        <?php if(isset($_GET['d']) && !empty($_GET['d']))
+        {
+                $detailproject=$_GET['d'];
+
+                $get_details=mysqli_query($connfig,"SELECT * FROM projects WHERE id_projects='$detailproject' AND id_user='{$_SESSION['id']}' LIMIT 1");
+                if(mysqli_num_rows($get_details) > 0)
+                {
+
+                    $data=mysqli_fetch_assoc($get_details);
+                }
+
+        }
+
+        ?>
+       <?php echo' <img class="w-60 h-60 object-cover mb-8 mx-auto" src="./pfp_project/'.$data['project_photo'].'" alt="">';?>
+
+        <h1 class="text-2xl mb-2 text-center font-bold"><?php  echo $data['project_name']; ?></h1>
+
+        <p class="text-base text-center font-medium"><?php   echo $data['Description']; ?></p>
+
+
+        <?php
+            $get_amount=mysqli_query($connfig,"SELECT SUM(amount) as somme FROM donation WHERE id_projects='$detailproject'");
+            $data_amount=mysqli_fetch_assoc($get_amount);
+            $total_amount=$data_amount['somme'];
+            $objectifs=$data['Objectif'];
+
+
+        ?>
         <h2 class="text-xl mt-12 text-center font-bold">Objectif</h2>
-        <p class="text-xl mt-6 text-center text-green-500 font-bold">1000 / 3000 DA</p>
+        <?php
+                if($total_amount < $objectifs )
+                {
+
+                  echo  '<p class="text-xl mt-6 text-center  font-bold"><span class="text-red-500" >'.$total_amount.'</span> / <span class="text-green-500">'.$objectifs.' DA</span></p>';
+                }else
+                {
+                    echo  '<p class="text-xl mt-6 text-center  font-bold"><span class="text-green-500" >'.$total_amount.'</span> / <span class="text-green-500">'.$objectifs.' DA</span></p>';
+                }
+         ?>
 
 
 
@@ -45,7 +80,7 @@ include_once "conndatabase.php";
                 </tr>
             </thead>
             <tbody>
-                <?php $get_donation = mysqli_query($connfig, "SELECT d.*, u.* FROM `donation` d JOIN `users` u ON d.id_user=u.id_user");
+                <?php $get_donation = mysqli_query($connfig, "SELECT d.*, u.* FROM `donation` d JOIN `users` u ON d.id_user=u.id_user WHERE d.id_projects='$detailproject'");
                 if (mysqli_num_rows($get_donation) > 0) {
                     $i = 1;
                     while ($row = mysqli_fetch_assoc($get_donation)) {
