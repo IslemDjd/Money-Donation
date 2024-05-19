@@ -19,7 +19,7 @@ session_start();
 
 
     
-    <div class="grid gap-6 w-full h-full p-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-6 w-[25%] h-full p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <!-- Project Card -->
 
         <?php $get_projects=mysqli_query($connfig,"SELECT p.* , u.* FROM `projects` p JOIN `users` u ON p.id_user=u.id_user order by p.date desc");
@@ -34,7 +34,6 @@ session_start();
                     <h2 class="text-xl font-bold">Project : '.$row['project_name'].'</h2> 
                     <p class="text-gray-600">'.$row['Description'].'</p>
                     <h3 class="text-lg font-semibold mt-3 ">Montant : <span class="text-green-600"> '.$row['Objectif'].'</span>DA</h3>
-                    
                     <p class="text-gray-600 mb-16">Owner : '.$row['firstname'].' '.$row['lastname'].'</p>
                     <div class="flex justify-end items-center mt-4">';
                     if(isset($_SESSION['email']))
