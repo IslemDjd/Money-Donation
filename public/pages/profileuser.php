@@ -284,12 +284,25 @@ if (isset($_POST['delete'])) {
             </div>
             <div class="w-full lg:w-4/12 px-4 lg:order-1">
               <div class="flex justify-center py-4 lg:pt-4 pt-8">
-                <div class="mr-4 p-3 text-center">
-                  <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">22</span><span class="text-sm text-blueGray-400">My donation</span>
-                </div>
-                <div class="mr-4 p-3 text-center">
-                  <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">10</span><span class="text-sm text-blueGray-400">Projects</span>
-                </div>
+                <?php
+                    if($_SESSION['role']=="donnator")
+                    {
+                      $get_don=mysqli_query($connfig,"SELECT * FROM `donation` WHERE id_user='{$_SESSION['id']}'");
+                      $num_don=mysqli_num_rows($get_don);
+
+                      echo' <div class="mr-4 p-3 text-center">
+                        <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">'.$num_don.'</span><span class="text-sm text-blueGray-400">My donation</span>
+                      </div>';
+                    }else if($_SESSION['role']=="beneficiary")
+                    {
+                      $get_project=mysqli_query($connfig,"SELECT * FROM `projects` WHERE id_user='{$_SESSION['id']}'");
+                      $num_project=mysqli_num_rows($get_project);
+                        echo'
+                        <div class="mr-4 p-3 text-center">
+                          <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">'.$num_project.'</span><span class="text-sm text-blueGray-400">Projects</span>
+                        </div>';
+                    }
+                ?>
               
               </div>
             </div>
