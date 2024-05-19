@@ -136,6 +136,8 @@ if(isset($_POST['save']))
              {
                 $_SESSION['Go']="Thank you for your donnation!";
                 
+                
+                
 
              }
         }
@@ -156,19 +158,21 @@ if(isset($_POST['save']))
     <div class="w-full sm:w-3/5  mx-auto  my-16 bg-white border-2 rounded-lg shadow-md p-6">
         <h2 class="text-2xl text-center font-bold text-gray-800 mb-4">Make Donnation</h2>
         
+      
         <?php   if(isset($_SESSION['Go']) && !empty($_SESSION['Go'])): ?>
                 <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
                 <?php
                 {
                     echo'
                     
-                        <span class="font-medium">Success !</span>'.$_SESSION['Go'].'';
+                        <span class="font-medium text-center">Success !</span>'.$_SESSION['Go'].'';
                  }
                 unset($_SESSION['Go']);
             ?>
             </div>
              <?php endif;?>
 
+             
              <?php   if(isset($_SESSION['back']) && !empty($_SESSION['back'])): ?>
             <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 
