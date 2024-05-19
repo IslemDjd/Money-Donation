@@ -9,5 +9,6 @@
 </head>
 <body>
     <h1 class="text-center text-2xl font-bold my-12">My Projects</h1>
+    
 </body>
 </html>

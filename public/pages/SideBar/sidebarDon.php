@@ -24,7 +24,6 @@
 	          <span class="z-10 sr-only">Toggle Menu</span>
 	        </button>
         </div>
-	  		<!-- <h1><a href="index.html" class="logo">Money Donation</a></h1> -->
         <ul class="list-unstyled components mb-5">
           <li class="active">
             <a href="DashboardBenificateur.php?p=profile"><span class="fa fa-home mr-3"></span> Profile</a>
