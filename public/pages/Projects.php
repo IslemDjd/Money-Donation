@@ -19,7 +19,7 @@ session_start();
 
 
     
-    <div class="grid gap-6 p-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-6 w-full h-full p-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         <!-- Project Card -->
 
         <?php $get_projects=mysqli_query($connfig,"SELECT p.* , u.* FROM `projects` p JOIN `users` u ON p.id_user=u.id_user order by p.date desc");
@@ -29,7 +29,7 @@ session_start();
                  {
                     echo'
                     <div class="bg-white rounded-lg shadow-md relative">
-                    <img class="w-full h-60 object-cover rounded-t-lg" alt="Card Image" src="./pfp_project/'.$row['project_photo'].'">
+                    <img class="w-full sm:h-60 lg:h-80 object-cover rounded-t-lg" alt="Card Image" src="./pfp_project/'.$row['project_photo'].'">
                     <div class="p-4 ">
                     <h2 class="text-xl font-bold">Project : '.$row['project_name'].'</h2> 
                     <p class="text-gray-600">'.$row['Description'].'</p>
