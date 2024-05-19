@@ -26,7 +26,7 @@
         </div>
         <ul class="list-unstyled components mb-5">
           <li class="active">
-            <a href="DashboardBenificateur.php?p=profile"><span class="fa fa-home mr-3"></span> Profile</a>
+            <a href="DashboardDonnateur.php?p=profile"><span class="fa fa-home mr-3"></span> Profile</a>
           </li>
         </ul>
 
@@ -35,6 +35,9 @@
         <?php
         if(isset($_GET["p"]) && $_GET["p"] == "profile")
           include "profileuser.php";
+
+          if(isset($_GET["p"]) && $_GET["p"] == "Donnation")
+          include "Donnation.php";
         ?>
 		</div>
 

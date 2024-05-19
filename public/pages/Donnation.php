@@ -1,5 +1,15 @@
 <?php 
-session_start();
+//session_start();
+// if(!isset($_GET['p']) || !isset($_GET['v']) || !isset($_GET['projet']))
+// {
+//     header('Location:projects.php');
+// }
+
+// if(empty($_GET['p']) || empty($_GET['v']) || empty($_GET['projet']))
+// {
+//     echo "<script> alert('ffdfsrtrds')</script>";
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +20,7 @@ session_start();
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <?php 
-        include "NavBar/NavBar.php";
-    ?>
+   
     <div class="max-w-md mx-auto mt-8 bg-white border-2 rounded-lg shadow-md p-6">
         <h2 class="text-2xl text-center font-bold text-gray-800 mb-4">Make Donnation</h2>
     
@@ -24,8 +32,9 @@ session_start();
             <input type="text"
             name="projectname"
             id="projectname"
+            
             required
-            value="Project Test"
+            value="<?= $_GET['projet']?>"
             disabled
             class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-2 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
             >

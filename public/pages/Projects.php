@@ -1,4 +1,6 @@
 <?php 
+include_once "conndatabase.php";
+
 session_start();
 ?>
 <!DOCTYPE html>
@@ -14,16 +16,39 @@ session_start();
     <h1 class="text-center text-2xl font-bold my-12">Projects</h1>
     <div class="grid gap-6 p-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         <!-- Project Card -->
-        <div class="bg-white rounded-lg shadow-md">
-            <img class="w-full h-60 object-cover rounded-t-lg" alt="Card Image" src="https://via.placeholder.com/150">
-            <div class="p-4">
-                <h2 class="text-xl font-semibold">Project Title</h2>
-                <p class="text-gray-600">Project Description</p>
-                <div class="flex justify-end items-center mt-4">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400">Donate</button>
-                </div>
-            </div>
-        </div>
+
+        <?php $get_projects=mysqli_query($connfig,"SELECT p.* , u.* FROM `projects` p JOIN `users` u ON p.id_user=u.id_user order by p.date desc");
+            if(mysqli_num_rows($get_projects) > 0)
+            {
+                while($row=mysqli_fetch_assoc($get_projects))
+                 {
+                    echo'
+                    <div class="bg-white rounded-lg shadow-md">
+                    <img class="w-full h-60 object-cover rounded-t-lg" alt="Card Image" src="./pfp_project/'.$row['project_photo'].'">
+                    <div class="p-4">
+                    <h2 class="text-xl font-semibold">'.$row['project_name'].'</h2> 
+                    '.$row['Objectif'].' '.$row['firstname'].' '.$row['lastname'].'
+                    <p class="text-gray-600">'.$row['Description'].'</p>
+                    <div class="flex justify-end items-center mt-4">';
+                    if(isset($_SESSION['email']))
+                    {
+
+                        if($_SESSION['role']=="donnator")
+                        {
+                            echo'
+                            <a href="DashboardDonnateur.php?p=Donnation&projet='.$row['project_name'].'&v='.$row['id_projects'].'"><button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400">Donate</button></a>';
+                        }
+                    }else
+                    {
+                       echo' <a href="SignIn.php"><button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400">Donate</button></a>';
+                    }
+                    echo'
+                    </div>
+                    </div>
+                    </div>';
+                }
+           }
+       ?>
         
        
     </div>

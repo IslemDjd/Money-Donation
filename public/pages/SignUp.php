@@ -1,5 +1,20 @@
 <?php
 session_start();
+
+if(isset($_SESSION['email']))
+{
+    if($_SESSION['role']=="donnator")
+    {
+        header("Location:DashboardDonnateur.php?p=profile");
+    }else if($_SESSION['role']=="beneficiary")
+    {
+        header("DashboardBenificateur.php?p=profile");
+
+    }
+{
+    
+}
+}
 include_once "conndatabase.php";
 
 if(isset($_POST['signup']))

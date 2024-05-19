@@ -1,5 +1,14 @@
 <?php 
 session_start();
+if(isset($_SESSION['email']))
+{
+   if($_SESSION['role']=="donnator")
+    {
+        header("location:DashboardDonnateur.php?p=profile");
+
+    }
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
