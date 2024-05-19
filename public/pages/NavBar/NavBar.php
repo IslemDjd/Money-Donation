@@ -40,12 +40,12 @@
                                 {
 
                                     echo'
-                                <a href="DashboardDonnateur.php"
+                                <a href="DashboardDonnateur.php?p=profile"
                                     class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>';
                                 }else if($_SESSION['role']=="beneficiary")
                                 {
                                      echo'
-                                    <a href="DashboardBenificateur.php"
+                                    <a href="DashboardBenificateur.php?p=profile"
                                         class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>';
                                     
                                 }
