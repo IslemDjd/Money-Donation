@@ -238,7 +238,7 @@ if(isset($_POST['save']))
             </label>
             <select name="donnationType" required id="donnationType" class=" w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required>
                 <option value="" selected disabled>Donnation Type</option>
-                <option value="enctuel Donnation" >Penctuel Donnation</option>
+                <option value="penctuel Donnation" >Penctuel Donnation</option>
                 <option value="Mensuel Donnation" >Mensuel Donnation</option>
             </select>
 
