@@ -26,7 +26,7 @@ if(isset($_POST['save']))
 {
         $e=0;
         $donnationType=$_POST['donnationType'];
-        if(!in_array($donnationType,['enctuel Donnation','Mensuel Donnation']))
+        if(!in_array($donnationType,['penctuel Donnation','Mensuel Donnation']))
         {
             $e=1;
         }
