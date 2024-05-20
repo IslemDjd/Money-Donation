@@ -28,6 +28,9 @@
           <li class="active">
             <a href="DashboardDonnateur.php?p=profile"><span class="fa fa-home mr-3"></span> Profile</a>
           </li>
+          <li class="active">
+            <a href="DashboardDonnateur.php?p=historique"><span class="fa fa-home mr-3"></span> Donnation History</a>
+          </li>
         </ul>
 
     	</nav>
@@ -35,6 +38,9 @@
         <?php
         if(isset($_GET["p"]) && $_GET["p"] == "profile")
           include "profileuser.php";
+        
+        if(isset($_GET["p"]) && $_GET["p"] == "historique")
+          include "donnationHistorique.php";
 
           if(isset($_GET["p"]) && $_GET["p"] == "Donnation")
           include "Donnation.php";

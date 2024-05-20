@@ -15,7 +15,7 @@ session_start();
     <?php include "NavBar/NavBar.php";?>
 
 
-    <h1 class="text-center text-2xl font-bold my-12">Projects</h1>
+    <h1 class="text-center text-4xl font-bold my-12">Our Projects</h1>
 
 
     
