@@ -25,7 +25,10 @@ include_once "conndatabase.php";
 
         }
 
+
         ?>
+        <h1 class="text-center text-4xl font-bold mb-8">Project Details</h1>
+
         <?php echo ' <img class="w-60 h-60 object-cover mb-8 mx-auto" src="./pfp_project/' . $data['project_photo'] . '" alt="">'; ?>
 
         <h1 class="text-2xl mb-2 text-center font-bold"><?php echo $data['project_name']; ?></h1>
