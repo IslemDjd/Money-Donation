@@ -40,8 +40,8 @@ if(isset($_POST['save']))
             $e=1;
         }else
         {
-            if (!preg_match('/^\d+$/', $_POST['amount'])) {
-                $_SESSION['back']=" Invalid Type!";
+            if (!preg_match('/^\d{1,9}$/', $_POST['amount'])) {
+                $_SESSION['back']=" Enter A Valid Amount!";
                 $e= 1; 
              } else {
             $amount=$_POST['amount'];
