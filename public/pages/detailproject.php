@@ -77,10 +77,13 @@ include_once "conndatabase.php";
                         class="px-2 py-2 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
                         Type
                     </th>
-
                     <th
                         class="px-2 py-2 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
-                        Created at
+                        Amount
+                    </th>
+                    <th
+                        class="px-2 py-2 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
+                        Donated at
                     </th>
                 </tr>
             </thead>
@@ -99,6 +102,9 @@ include_once "conndatabase.php";
                         </td>
                         <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
                         ' . $row['donation_type'] . '
+                        </td>
+                         <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
+                        ' . $row['amount'] . ' DA
                         </td>
                         <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
                         ' . $row['date_donation'] . '

@@ -1,62 +1,52 @@
 <?php
 session_start();
 
-if(isset($_SESSION['email']))
-{
-    if($_SESSION['role']=="donnator")
-    {
+if (isset($_SESSION['email'])) {
+    if ($_SESSION['role'] == "donnator") {
         header("Location:DashboardDonnateur.php?p=profile");
-    }else if($_SESSION['role']=="beneficiary")
-    {
+    } else if ($_SESSION['role'] == "beneficiary") {
         header("DashboardBenificateur.php?p=profile");
 
+    } {
+
     }
-{
-    
-}
 }
 include_once "conndatabase.php";
 
-if(isset($_POST['signup']))
-{
-    $erreur=0;
-    $firstname=$_POST['first_name'];
-    $lastname=$_POST['last_name'];
-    $email=$_POST['email'];
-    $phone=$_POST['phone'];
-    $password=$_POST['password'];
-    if(isset($_POST['role']) && !empty($_POST['role']))
-    {
+if (isset($_POST['signup'])) {
+    $erreur = 0;
+    $firstname = $_POST['first_name'];
+    $lastname = $_POST['last_name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+    if (isset($_POST['role']) && !empty($_POST['role'])) {
 
-        $role=$_POST['role'];
+        $role = $_POST['role'];
     }
 
-    if(!in_array($role,['donnator','beneficiary']))
-    {
-        $erreur=1;
+    if (!in_array($role, ['donnator', 'beneficiary'])) {
+        $erreur = 1;
 
     }
-    
-    $check_unique=mysqli_query($connfig,"SELECT * FROM users WHERE email='$email' LIMIT 1");
-    if(mysqli_num_rows($check_unique)> 0)
-    {
-        $erreur=1;
+
+    $check_unique = mysqli_query($connfig, "SELECT * FROM users WHERE email='$email' LIMIT 1");
+    if (mysqli_num_rows($check_unique) > 0) {
+        $erreur = 1;
     }
 
 
 
-    if($erreur==0)
-    {
-        $date=date("Y-m-d H:i:s");
-        $insert_data=mysqli_query($connfig,"INSERT INTO `users`(`firstname`, `lastname`, `email`, `phone`, `password`, `role`, `date`) VALUES
+    if ($erreur == 0) {
+        $date = date("Y-m-d H:i:s");
+        $insert_data = mysqli_query($connfig, "INSERT INTO `users`(`firstname`, `lastname`, `email`, `phone`, `password`, `role`, `date`) VALUES
          ('$firstname','$lastname','$email','$phone','$password','$role','$date')");
 
-         if($insert_data)
-         {
-            $_SESSION['Go']="Account created succesfully,login now!";
+        if ($insert_data) {
+            $_SESSION['Go'] = "Account created succesfully,login now!";
             header("Location:SignIn.php");
             die;
-         }
+        }
     }
 }
 
@@ -66,28 +56,30 @@ if(isset($_POST['signup']))
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link  rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <?php
 
     include "NavBar/NavBar.php";
 
 
-?>
-    
-    
+    ?>
+
+
     <section class="bg-white">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <section class="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
                 <img alt=""
                     src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                     class="absolute inset-0 h-full w-full object-cover opacity-80" />
-    
+
                 <div class="hidden lg:relative lg:block lg:p-12">
                     <a class="block text-white" href="#">
                         <span class="sr-only">Home</span>
@@ -97,19 +89,20 @@ if(isset($_POST['signup']))
                                 fill="currentColor" />
                         </svg>
                     </a>
-    
+
                     <h2 class="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                         Welcome to Squid 🦑
                     </h2>
-    
+
                     <p class="mt-4 leading-relaxed text-white/90">
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
                         quibusdam aperiam voluptatum.
                     </p>
                 </div>
             </section>
-    
-            <main class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
+
+            <main
+                class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
                 <div class="max-w-xl lg:max-w-3xl">
                     <div class="relative -mt-16 block lg:hidden">
                         <a class="inline-flex size-16 items-center justify-center rounded-full bg-white text-blue-600 sm:size-20"
@@ -121,80 +114,87 @@ if(isset($_POST['signup']))
                                     fill="currentColor" />
                             </svg>
                         </a>
-    
+
                         <h1 class="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
                             Welcome to Squid 🦑
                         </h1>
-    
+
                         <p class="mt-4 leading-relaxed text-gray-500">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
                             quibusdam aperiam voluptatum.
                         </p>
                     </div>
-    
+
                     <form action="#" method="POST" class="mt-8 grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
                             <label for="FirstName" class="block text-sm font-medium text-gray-700">
                                 First Name
                             </label>
-    
+
                             <input type="text" id="FirstName" name="first_name"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm"
+                                required />
                         </div>
-    
+
                         <div class="col-span-6 sm:col-span-3">
                             <label for="LastName" class="block text-sm font-medium text-gray-700">
                                 Last Name
                             </label>
-    
+
                             <input type="text" id="LastName" name="last_name" autocomplete="off"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm " required />
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm "
+                                required />
                         </div>
-    
+
                         <div class="col-span-6">
                             <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
-    
+
                             <input type="email" id="Email" name="email"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm"
+                                required />
                         </div>
 
                         <div class="col-span-6">
                             <label for="Telephone" class="block text-sm font-medium text-gray-700"> Role </label>
-                            <select name="role" id="" class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required>
+                            <select name="role" id=""
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm"
+                                required>
                                 <option value="" selected disabled>Select Role</option>
-                                <option value="donnator" >Donnator</option>
-                                <option value="beneficiary" >Beneficiary</option>
+                                <option value="donnator">Donnator</option>
+                                <option value="beneficiary">Beneficiary</option>
                             </select>
                         </div>
                         <div class="col-span-6">
                             <label for="Telephone" class="block text-sm font-medium text-gray-700"> Phone </label>
-    
+
                             <input type="text" id="Email" name="phone"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm"
+                                required />
                         </div>
                         <div class="col-span-6">
                             <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
-    
+
                             <input type="password" id="Email" name="password"
-                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm" required />
+                                class="mt-2 w-full p-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 shadow-sm"
+                                required />
                         </div>
-    
-                        
-    
-                        
-    
-                       
-    
-                       
-    
+
+
+
+
+
+
+
+
+
                         <div class="col-span-6 flex flex-col sm:flex sm:items-center sm:gap-4">
-                            
+
                             <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                                 Already have an account?
                                 <a href="SignIn.php" class="text-gray-700 underline">Sign in</a>.
                             </p>
-                            <button
-                              type="submit" name="signup"   class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+                            <button type="submit" name="signup"
+                                class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
                                 Create an account
                             </button>
                         </div>
@@ -203,6 +203,9 @@ if(isset($_POST['signup']))
             </main>
         </div>
     </section>
+    <?php include "Footer/Footer.php"; ?>
+
 
 </body>
+
 </html>
