@@ -8,9 +8,7 @@ if (isset($_SESSION['email'])) {
     } else if ($_SESSION['role'] == "beneficiary") {
         header("location:DashboardBenificateur.php?p=profile");
 
-    } {
-
-    }
+    } 
 }
 include_once "conndatabase.php";
 
