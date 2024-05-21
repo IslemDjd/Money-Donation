@@ -8,8 +8,9 @@
 ### 6 - Import the DataBase file 
 ### 7 - Open Vscode 
 ### 8 - Open the project Folder and open the terminal and Type 'cd public'
-### 9 - Now Type 'npm i' (Make sure that node js is installed in your pc) a node_modules folder will appear
+### 9 - Now Type 'npm i' a node_modules folder will appear
+###   ->(Make sure that node js is installed in your pc)
 ### 10 - Now open apache (press admin in xampp)
 ### 11 - Acces to the project MONEY-DONATION/public/pages
 ### 12 - Congratulation
-###  * If it didn't work , make sure that you followed all the previous steps
+### * If it didn't work , make sure that you followed all the previous steps
