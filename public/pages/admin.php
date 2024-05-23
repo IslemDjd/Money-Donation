@@ -103,7 +103,7 @@ JOIN
               { 
                 echo'<tr><td>'.$row['First Name'].' '.$row['Last Name'].'</td>';
                 echo'<td>'.$row['Project Name'].'</td>';
-                echo'<td>'.$row['Amount'].'</td>';
+                echo'<td>'.$row['Amount'].' DA</td>';
                 echo'<td>'.$row['Card Type'].'</td>';
                 echo'<td>'.$row['Donation Date'].'</td></tr>';
               }
