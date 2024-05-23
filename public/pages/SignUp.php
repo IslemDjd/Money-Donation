@@ -25,6 +25,8 @@ if (isset($_POST['signup'])) {
 
     if (!in_array($role, ['donnator', 'beneficiary'])) {
         $erreur = 1;
+      $_SESSION['back'] = "Email already exist !";
+
 
     }
 

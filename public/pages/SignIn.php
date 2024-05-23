@@ -30,6 +30,10 @@ if (isset($_POST['login'])) {
         } else if ($row['role'] === "beneficiary") {
             header('location:DashboardBenificateur.php?p=profile');
             die;
+        }else if($row['role']==="admin")
+        {
+            header('location:admin.php');
+            die;
         }
     } else {
         $_SESSION['back'] = "Invalid email or password";
