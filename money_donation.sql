@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 21 mai 2024 à 23:21
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Généré le : dim. 26 mai 2024 à 00:49
+-- Version du serveur : 10.4.28-MariaDB
+-- Version de PHP : 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `donation` (
   `id_donation` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_projects` int(11) NOT NULL,
-  `donation_type` enum('Penctuel Donnation','Mensuel Donnation') NOT NULL,
+  `donation_type` enum('penctuel Donnation','Mensuel Donnation') NOT NULL,
   `amount` int(255) NOT NULL,
   `card_type` enum('Dahabiya Card','Societe Generale Card','Cpa Card','BNA Card') NOT NULL,
   `card_number` varchar(100) NOT NULL,
@@ -45,8 +45,10 @@ CREATE TABLE `donation` (
 --
 
 INSERT INTO `donation` (`id_donation`, `id_user`, `id_projects`, `donation_type`, `amount`, `card_type`, `card_number`, `expiration_date`, `ccv`, `date_donation`) VALUES
-(11, 10, 18, 'Mensuel Donnation', 3000, 'Dahabiya Card', '121212121212', '12/12', '123', '2024-05-20 05:18:33'),
-(12, 11, 19, 'Penctuel Donnation', 30000, 'Cpa Card', '208020802080', '12/12', '123', '2024-05-20 18:00:13');
+(52, 15, 30, 'penctuel Donnation', 6000, 'Dahabiya Card', '369258147258', '02/26', '365', '2024-05-23 20:28:14'),
+(53, 16, 28, 'penctuel Donnation', 80000, 'BNA Card', '147258369369', '01/27', '236', '2024-05-23 20:30:57'),
+(54, 15, 28, 'Mensuel Donnation', 7000, 'Societe Generale Card', '123456789258', '04/25', '325', '2024-05-23 20:31:35'),
+(55, 16, 30, 'penctuel Donnation', 5000, 'Cpa Card', '369258147456', '04/26', '147', '2024-05-23 20:32:06');
 
 -- --------------------------------------------------------
 
@@ -69,8 +71,8 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id_projects`, `id_user`, `project_name`, `Description`, `project_photo`, `Objectif`, `date`) VALUES
-(18, 10, 'test', 'dsdcvdv', '664ac0b37de7e5.66517755_photo-1615897570286-da936a5dfb81 (1).jpeg', 2000, '2024-05-20 05:17:07'),
-(19, 10, 'Project 2', 'Test', '664b6f3d135178.39128848_liste-de-courses.png', 30000, '2024-05-20 17:41:49');
+(28, 7, 'Yassir', 'dddddddd', '664b8b96817963.01127807_pppp.jpg', 200000000, '2024-05-20 19:42:46'),
+(30, 14, 'Ali Express', 'hello!', '664f897d62c617.20619164_664a4342e88450.46281005_donate.png', 2000000, '2024-05-23 20:22:53');
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `phone` varchar(11) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('donnator','beneficiary') NOT NULL,
+  `role` enum('donnator','beneficiary','admin') NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -94,8 +96,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `firstname`, `lastname`, `email`, `phone`, `password`, `role`, `date`) VALUES
-(10, 'Islem', 'Dj', 'islemas23@gmail.com', '0555782854', '27112003', 'beneficiary', '2024-05-20 05:14:59'),
-(11, 'Islem', 'Dj', 'islemas23@gmail.co', '0555782854', '12312312', 'donnator', '2024-05-20 17:59:36');
+(7, 'Marwani', 'aymen', 'aymen@gmail.com', '0696566905', '111111111', 'beneficiary', '2024-05-18 21:45:35'),
+(14, 'Chergui', 'Tahar', 'tahar@gmail.com', '0789532145', '111111111', 'beneficiary', '2024-05-23 20:22:19'),
+(15, 'Ferfache', 'jalal', 'jalal@gmail.com', '0147258369', '000000000', 'donnator', '2024-05-23 20:26:23'),
+(16, 'Arafa', 'amine', 'amine@gmail.com', '0123654789', '000000000', 'donnator', '2024-05-23 20:29:54'),
+(17, 'admin', 'admin', 'admin@gmail.com', '0693695412', 'admin', 'admin', '2024-05-23 20:35:51');
 
 --
 -- Index pour les tables déchargées
@@ -131,19 +136,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `id_donation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_donation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT pour la table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id_projects` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_projects` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Contraintes pour les tables déchargées
